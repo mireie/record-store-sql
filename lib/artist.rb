@@ -74,12 +74,18 @@ class Artist
   def self.find_by_album(alb_id)
     artists = []
     returned_artists = DB.exec("SELECT artist_id FROM albums_artists WHERE album_id = #{alb_id};")
-    binding.pry
-    returned_artists.each() do |artist|
-      name = artist.fetch("name")
-      id = artist.fetch("id").to_i
-      artists.push(Artist.new({ :name => name, :album_id => alb_id, :id => id }))
+    returned_artists.each do |artist|
+      artist = DB.exec("SELECT name FROM artists WHERE id = #{artist.fetch("artist_id")};").first
+      artists.push(artist.fetch("name"))
     end
-    artists.join(",")
+    # binding.pry
+    artists.join(", ")
   end
 end
+
+# returned_artists.each() do |artist|
+#   name = artist.fetch("name")
+#   id = artist.fetch("id").to_i
+#   artists.push(Artist.new({ :name => name, :album_id => alb_id, :id => id }))
+# end
+# artists.join(",")
