@@ -1,0 +1,6 @@
+<h1>Add album for <%=@artist.name() %></h1>
+<form action="/artists/<%= @artist.id %>/add_album" method="post">
+  <label for="album_name">add album</label>
+  <input id="album_name" name="album_name" type="text">
+  <button type="submit" class="btn btn-primary">Update</button>
+</form>

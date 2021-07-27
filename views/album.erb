@@ -12,6 +12,18 @@
     <p>There are no songs listed for this album yet.</p>
   <% end %>
 
+<h3>Album Artists</h3>
+
+  <% if @album.songs %>
+    <ul>
+      <% @album.songs.each do |song| %>
+        <li><a href="/albums/<%= @album.id %>/songs/<%= song.id %>"><%= song.name %></a></li>
+      <% end %>
+    </ul>
+  <% else %>
+    <p>There are no songs listed for this album yet.</p>
+  <% end %>
+
 <h4>Add a song:</h4>
 
 <form action="/albums/<%= @album.id %>/songs" method="post">
@@ -21,7 +33,6 @@
   </div>
   <button type="submit" class="btn btn-primary">Add song</button>
 </form>
-
 
 
 <p><a href="/albums/<%= @album.id %>/edit">Edit album</a></p>

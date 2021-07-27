@@ -1,0 +1,46 @@
+<div class="row">
+  <div class="col">
+    <h2><a href="/albums">Albums</h2>
+    <% if @albums.any? %>
+      <div class="row">
+        <% @albums.each do |album| %>
+          <div class="col-sm-4 g-3">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title"><a href="/albums/<%= album.id %>"><%= album.name %></a></h5>
+                <h6 class="card-subtitle mb-2 text-muted">Artist: </h6>
+                <h6 class="card-subtitle mb-2 text-muted">Release Year: <%= album.release_year %></h6>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    <% else %>
+      <p>There are currently no records to display.</p>
+    <% end %>
+    <a class="btn btn-primary mt-3" href="/albums/new">Add a new album</a>
+  </div>
+  <div class="col">
+    <h2><a href="/artists">Artists</a></h2>
+    <% if @artists.any? %>
+      <div class="row">
+        <div class="col-md-6">
+        </div>
+      </div>
+      <div class="row">
+        <% @artists.each do |artist| %>
+          <div class="col-sm-4 g-3">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title"><a href="/artists/<%= artist.id %>"><%= artist.name %></a></h5>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    <% else %>
+      <p>There are currently no artists to display.</p>
+    <% end %>
+    <a class="btn btn-primary mt-3" href="/artists/new">Add a new artist</a>
+  </div>
+</div>

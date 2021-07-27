@@ -12,7 +12,7 @@ class Album
     returned_albums.each() do |album|
       name = album.fetch("name")
       id = album.fetch("id").to_i
-      release_year= album.fetch("release_year").to_i
+      release_year= album.fetch("release_year")
       albums.push(Album.new({ :name => name, :id => id, :release_year => release_year }))
     end
     albums
@@ -36,7 +36,7 @@ class Album
     if album
       name = album.fetch("name")
       id = album.fetch("id").to_i
-      release_year = album.fetch("release_year").to_i
+      release_year = album.fetch("release_year")
       Album.new({ :name => name, :id => id, :release_year => release_year})
     else
       false
@@ -55,5 +55,9 @@ class Album
 
   def songs
     Song.find_by_album(self.id)
+  end
+
+  def artists
+    Artist.find_by_album(self.id)
   end
 end

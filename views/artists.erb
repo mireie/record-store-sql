@@ -1,0 +1,21 @@
+<h3>Available Artists</h3>
+<% if @artists.any? %>
+  <div class="row">
+    <div class="col-md-6">
+    </div>
+  </div>
+  <div class="row">
+    <% @artists.each do |artist| %>
+      <div class="col-sm-3 g-3">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title"><a href="/artists/<%= artist.id %>"><%= artist.name %></a></h5>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+<% else %>
+  <p>There are currently no artists to display.</p>
+<% end %>
+<a class="btn btn-primary mt-3" href="/artists/new">Add a new artist</a>
