@@ -3,7 +3,7 @@ class Album
   attr_reader :id
 
   def initialize(attributes)
-    attributes.each {|pair| instance_variable_set("@#{pair[0].to_s}", pair[1])}
+    attributes.each {|pair| instance_variable_set("@#{pair[0].to_s}", pair[1].to_s.gsub("'"){"&#39;"})}
   end
 
   def self.all

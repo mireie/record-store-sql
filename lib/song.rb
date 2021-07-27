@@ -3,7 +3,7 @@ class Song
   attr_accessor :name, :album_id
 
   def initialize(attributes)
-    attributes.each {|pair| instance_variable_set("@#{pair[0].to_s}", pair[1])}
+    attributes.each {|pair| instance_variable_set("@#{pair[0].to_s}", pair[1].to_s.gsub("'"){"&#39;"})}
   end
 
   def ==(song_to_compare)
@@ -27,7 +27,8 @@ class Song
   end
 
   def save
-    result = DB.exec("INSERT INTO songs (name, album_id) VALUES ('#{@name}', #{@album_id}) RETURNING id;")
+    clean_name = @name.gsub("'"){"&#39;"}
+    result = DB.exec("INSERT INTO songs (name, album_id) VALUES ('#{clean_name}', #{@album_id}) RETURNING id;")
     @id = result.first().fetch("id").to_i
   end
 

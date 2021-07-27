@@ -77,6 +77,7 @@ delete ("/albums/:id") do
 end
 
 get ("/albums/:id/songs/:song_id") do
+  @song = Song.find(params[:song_id].to_i)
   if @song
     @song = Song.find(params[:song_id].to_i())
     erb(:song)

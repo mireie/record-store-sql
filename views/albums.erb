@@ -31,7 +31,7 @@
         <div class="card">
           <div class="card-body">
             <h5 class="card-title"><a href="/albums/<%= album.id %>"><%= album.name %></a></h5>
-            <h6 class="card-subtitle mb-2 text-muted">Artist: <%=album.artists %></h6>
+            <h6 class="card-subtitle mb-2 text-muted">Artist: <%=album.artists.join(", ") %></h6>
             <h6 class="card-subtitle mb-2 text-muted">Release Year: <%= album.release_year %></h6>
           </div>
         </div>

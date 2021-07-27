@@ -1,18 +1,19 @@
 <h2>Album Name: <%= @album.name %></h2>
 
-<h3>Album Songs</h3>
+<h3>Artists</h3>
 
-  <% if @album.songs %>
+  <% if @album.artists %>
     <ul>
-      <% @album.songs.each do |song| %>
-        <li><a href="/albums/<%= @album.id %>/songs/<%= song.id %>"><%= song.name %></a></li>
+    
+      <% @album.artists.each do |artist| %>
+        <li><%= artist %></li>
       <% end %>
     </ul>
   <% else %>
-    <p>There are no songs listed for this album yet.</p>
+    <p>There are no artists listed for this album yet.</p>
   <% end %>
 
-<h3>Album Artists</h3>
+<h3>Songs</h3>
 
   <% if @album.songs %>
     <ul>
