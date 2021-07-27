@@ -9,6 +9,19 @@ also_reload("lib/**/*.rb")
 
 DB = PG.connect({ :dbname => "record_store", :password => "epicodus" })
 
+get ("/albums/sort") do 
+  @albums = Album.all
+  case params[:sort]
+  when "id"
+    @albums.sort_by! {|album| album.id.to_i}
+  when "release_year"
+    @albums.sort_by! {|album| album.release_year.to_i}
+  else
+    @albums.sort_by! {|album| album.name.to_s}
+  end
+  erb(:albums)
+end
+
 get("/") do
   @albums = Album.all
   @albums.sort_by! { |album| album.name.downcase }
@@ -157,6 +170,8 @@ post("/artists/:id/add_album") do
   @artist.update({ :album_name => params[:album_name] })
   erb(:artist)
 end
+
+
 # get ("/albums/sort/:sort_method") do
 #   @albums = Album.all
 #   case params[:sort_method]

@@ -9,11 +9,10 @@
 <% if @albums.any? %>
   <div class="row">
     <div class="col-md-6">
-    <%# <a href="/albums/sort?release_year">Sort by Release Year</a> %>
-      <%# <form action="/albums/sort" method="get">
+      <form action="/albums/sort" method="get">
         <div class="row">
           <div class="col">
-            <select name="sort_method" class="form-control">
+            <select name="sort" class="form-control">
               <option value="id">Sort by ID</option>
               <option value="name">Sort by Name</option>
               <option value="release_year">Sort by Release Year</option>
@@ -23,7 +22,7 @@
             <button type="submit" class="btn btn-primary">Sort!</button>
           </div>
         </div>
-      </form> %>
+      </form>
     </div>
   </div>
   <div class="row">
@@ -43,6 +42,4 @@
   <p>There are currently no records to display.</p>
 <% end %>
 <a class="btn btn-primary mt-3" href="/albums/new">Add a new album</a>
-
-
 <a class="btn btn-primary mt-3" href="/artists">See Artists List</a>
